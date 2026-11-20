@@ -31,3 +31,4 @@ Skills in this repository are source files for review and reuse. Install or link
 ## Templates
 
 - [`templates/AGENTS.md`](templates/AGENTS.md) — optional starting point for project-specific agent instructions. Replace the prompts with verified details, remove irrelevant sections, and keep commands and constraints current.
+- [`.githooks/pre-commit`](.githooks/pre-commit) — optional interactive learning quiz for staged changes; see [hook setup and privacy notes](.githooks/README.md).
