@@ -4,6 +4,7 @@ A growing collection of practical agent skills for contemporary software work. E
 
 ## Skills
 
+- [`skills/accessible-technical-documentation`](skills/accessible-technical-documentation/SKILL.md) — write readable technical prose, lists, tables, and diagrams with text equivalents.
 - [`skills/multi-repo-rfc-planning`](skills/multi-repo-rfc-planning/SKILL.md) — scope shared contracts and repository decisions, then coordinate linked RFC reviews.
 - [`skills/learning-driven-development`](skills/learning-driven-development/SKILL.md) — pair with a developer so implementation builds understanding as well as working software.
 - [`skills/pull-request-hygiene`](skills/pull-request-hygiene/SKILL.md) — keep PRs cohesive, under 250 changed lines, and under 7 changed files.
