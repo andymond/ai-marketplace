@@ -19,6 +19,12 @@ Use this skill when a feature or epic spans repositories and needs architectural
 1. Capture the shared behavior, ownership, constraints, open choices, and how all consumers can verify the contract. Link to the product spec and work items.
 2. In each repo RFC, compare viable local options and describe the proposed implementation, consequences, and acceptance checks. Link to the shared RFC and reference its contract without copying it. Keep unresolved implementation choices identified as proposals or spikes.
 3. Show which decisions block implementation across repos and which can proceed independently. State the order for approving contracts, publishing them, and implementing or rolling them out. Include a compatibility check when repos release at different times.
-4. When asked to open reviews, use existing review PRs where possible to preserve discussion. Link companion reviews and identify the decisions each owns. Read back files and verify PR destinations and links. Keep decisions in proposed status until approved under the project's workflow.
+4. When asked to open reviews, use existing review PRs where possible to preserve discussion. Link companion reviews and identify the decisions each owns. Read back files and verify PR destinations and links. Follow the project's decision workflow.
+
+## Track decisions with PR labels
+
+Where the project uses label-based review, treat the open PR as the RFC and the merged decision record as the ADR. Use one state label at a time. Typical labels are `rfc-review`, `rfc-changes-requested`, `rfc-accepted`, and `rfc-rejected`. Acceptance makes the PR eligible to merge once dependencies and checks are satisfied. Close rejected proposals with their rationale in the review. Read the PR state and labels together. Leave the document text stable on acceptance. Follow local instructions when a project uses a different workflow.
+
+Use a new numbered record to supersede a merged decision. Link the earlier decision and explain why it changed. Coordinate predecessor RFCs before dependent schema or implementation choices.
 
 If a review changes a shared interface, update the source decision first and reconcile affected companion RFCs before implementation.
