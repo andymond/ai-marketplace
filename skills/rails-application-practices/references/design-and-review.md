@@ -24,6 +24,24 @@ For example, a provisioning action can call a Tenancy operation that owns the pe
 4. Run the smallest meaningful spec first, then the project's relevant CI checks. Use the configured linter for style, Zeitwerk for file and constant loading, Packwerk for declared boundaries where installed, and specs for runtime invariants. Packwerk results supplement review of runtime behavior and data ownership.
 5. When an agreed convention is missed repeatedly, put a working example or command in project instructions. For a rule a tool can verify reliably, prefer an existing generator, linter, test, or boundary check. Add a new enforcement mechanism only when the failure recurs and the rule is specific enough to check without regular exceptions.
 
+## Review fixed configuration at boot
+
+Before introducing a Rails mechanism, find the closest example in the
+application. If the behavior is unclear, check the project's installed Rails
+version and the framework source or guides for that version.
+
+When configuration stays fixed for a process, choose its source and defaults
+in the Rails configuration layer. For example, load a provisioning allowlist
+from credentials, validate the whole list in an initializer, and expose the
+frozen result through application config. Decide explicitly what a missing
+setting and an empty list mean in each environment. If a setting is required,
+fail boot with the key and expected format. The provisioning operation can
+then express eligibility as a membership check.
+
+Verify configuration failures by booting Rails in the target environment.
+Use domain specs for accepted and denied operations once configuration has
+loaded. Keep data meant to change while the process runs in its runtime source.
+
 ## Review workflows that issue a secret
 
 Trace an invitation or reset token from generation through storage, returned
