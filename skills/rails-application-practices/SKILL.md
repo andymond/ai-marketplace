@@ -1,11 +1,15 @@
 ---
 name: rails-application-practices
-description: Implement or review Rails application changes involving Active Record queries, migrations, authorization policy, RSpec setup, or Packwerk boundaries using the application's established conventions.
+description: Implement or review Rails application changes involving domain placement, Active Record queries, migrations, authorization policy, RSpec setup, or Packwerk boundaries using the application's established conventions.
 ---
 
 # Rails application practices
 
 Read the application's agent instructions, relevant ADRs, nearby models and specs, and CI commands. Use the Rails version, binstubs, and test runner selected by the repository.
+
+For a new workflow, a change across packs, or a readability review, use [Rails design and review](references/design-and-review.md) to decide where behavior belongs and trace the changed path before handoff.
+
+When designing a bounded context, choosing a package API, or changing enforcement, use [Domain-driven design and Packwerk](references/domain-boundaries.md).
 
 ## Model relationships and query from the owning record
 
