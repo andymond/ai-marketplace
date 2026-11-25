@@ -10,6 +10,7 @@ A growing collection of practical agent skills for contemporary software work. E
 - [`skills/pull-request-hygiene`](skills/pull-request-hygiene/SKILL.md) — keep PRs cohesive, under 250 changed lines, and under 7 changed files.
 - [`skills/worktree-management`](skills/worktree-management/SKILL.md) — coordinate Git worktrees and parallel agents with resource-aware setup and safe PR cleanup.
 - [`skills/clean-code-practices`](skills/clean-code-practices/SKILL.md) — improve clarity and changeability using practical Clean Code principles.
+- [`skills/rails-application-practices`](skills/rails-application-practices/SKILL.md) — use Rails conventions for Active Record, policy, migrations, and package boundaries.
 - [`skills/clean-architecture`](skills/clean-architecture/SKILL.md) — shape proportionate boundaries and dependencies informed by Clean Architecture.
 - [`skills/domain-probe-observability`](skills/domain-probe-observability/SKILL.md) — express business observations through domain probes while encapsulating instrumentation.
 - [`skills/spec-driven-development`](skills/spec-driven-development/SKILL.md) — turn requirements into user stories and acceptance criteria, then tests and implementation.
