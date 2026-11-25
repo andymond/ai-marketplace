@@ -15,9 +15,9 @@ Use this skill when writing or refactoring code for clarity and maintainability.
 
 ## Improve clarity
 
-- Use names that communicate purpose and domain meaning. Avoid vague abbreviations, misleading names, and comments that merely restate the code.
+- Use names and encapsulation to communicate purpose and domain meaning. If a comment explains what the next lines do, improve the names or structure first.
 - Keep functions and types cohesive around one clear responsibility. Extract a helper when it gives a meaningful name or removes repeated logic; avoid arbitrary size limits and excessive indirection.
-- Make data flow and side effects visible. Minimize hidden state, surprising mutation, and functions that appear to answer a question while changing the system.
+- Make data flow and side effects visible. Minimize hidden state, surprising mutation, and functions that appear to answer a question while changing the system. Give a decision an explicit outcome and a separate reason when callers need both.
 - Handle errors at a level that can make a useful decision. Preserve relevant context, avoid swallowing failures, and do not use exceptions or sentinel values to obscure ordinary control flow.
 - Keep formatting consistent and use comments to explain intent, constraints, or non-obvious decisions that the code cannot express directly.
 - Prefer simple designs over speculative generality. Add abstractions when they reduce real coupling or repetition, not to anticipate unsupported future needs.
