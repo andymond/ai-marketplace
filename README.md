@@ -2,6 +2,23 @@
 
 A growing collection of practical agent skills for contemporary software work. Each skill is a self-contained folder with a `SKILL.md` that explains when to use it and the project-specific guidance that improves the work.
 
+## Install in Claude Code
+
+This repository is a Claude Code plugin marketplace with one plugin, `ai-marketplace`, that contains every skill below. Install it in any project:
+
+```text
+/plugin install ai-marketplace --marketplace andymond/ai-marketplace
+```
+
+On Claude Code versions before 2.1.275, add the marketplace first:
+
+```text
+/plugin marketplace add andymond/ai-marketplace
+/plugin install ai-marketplace@andymond
+```
+
+Skills load as `ai-marketplace:<skill-name>`, for example `ai-marketplace:code-review`. Run `/plugin marketplace update andymond` to pick up new skills.
+
 ## Skills
 
 - [`skills/accessible-technical-documentation`](skills/accessible-technical-documentation/SKILL.md) — write readable technical prose, lists, tables, and diagrams with text equivalents.
@@ -30,7 +47,7 @@ Validate a skill with the Codex skill creator's validator when available:
 python3 /path/to/skill-creator/scripts/quick_validate.py skills/<skill-name>
 ```
 
-Skills in this repository are source files for review and reuse. Install or link one into an agent's skill directory when you want that agent to discover it.
+Skills in this repository are source files for review and reuse. Claude Code picks up every folder under `skills/` through the plugin (see [Install in Claude Code](#install-in-claude-code)); for other agents, install or link a skill into the agent's skill directory. After adding a skill, run `claude plugin validate .` and bump `version` in `.claude-plugin/plugin.json` so installed copies update.
 
 ## Templates
 

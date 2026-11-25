@@ -1,0 +1,17 @@
+{
+  "name": "andymond",
+  "owner": {
+    "name": "andymond",
+    "url": "https://github.com/andymond"
+  },
+  "metadata": {
+    "description": "Andy's agent skills, packaged as one Claude Code plugin."
+  },
+  "plugins": [
+    {
+      "name": "ai-marketplace",
+      "source": "./",
+      "description": "Practical agent skills for software work: spec-driven development, clean code and architecture, Rails and Kotlin practices, code review, debugging, PR hygiene, worktrees and more."
+    }
+  ]
+}
