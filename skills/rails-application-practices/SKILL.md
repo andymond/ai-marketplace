@@ -9,6 +9,8 @@ Read the application's agent instructions, relevant ADRs, nearby models and spec
 
 For a new workflow, a change across packs, or a readability review, use [Rails design and review](references/design-and-review.md) to decide where behavior belongs and trace the changed path before handoff.
 
+When designing a bounded context, choosing a package API, or changing enforcement, use [Domain-driven design and Packwerk](references/domain-boundaries.md).
+
 ## Model relationships and query from the owning record
 
 - Start with Active Record associations and named scopes. Filter by ownership and record identity before loading rows. For a relationship with its own state, such as a tenant membership with a role and status, query that record by tenant and user. Use an association join when related state must be read in the same database statement.
