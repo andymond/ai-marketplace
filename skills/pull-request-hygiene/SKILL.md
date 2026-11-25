@@ -28,6 +28,8 @@ Use this skill when preparing or reviewing a pull request. Aim for one cohesive 
 - Avoid artificial splits that leave every intermediate branch broken or make reviewers reconstruct the whole change. If the work cannot be split cleanly, explain why and ask the user before exceeding the limits.
 - When an existing PR already exceeds the limits, report the actual counts and offer a split plan; do not silently expand it further.
 
+When a pull request already has review activity and needs splitting, use the [review-preserving split example](references/review-preserving-splits.md).
+
 ## Prepare the review
 
 - Verify the PR diff contains only its intended purpose and stays within the line and file limits.
