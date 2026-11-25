@@ -1,6 +1,6 @@
 ---
 name: rails-application-practices
-description: Implement or review Rails application changes involving Active Record queries, migrations, authorization policy, or Packwerk boundaries using the application's established conventions.
+description: Implement or review Rails application changes involving Active Record queries, migrations, authorization policy, RSpec setup, or Packwerk boundaries using the application's established conventions.
 ---
 
 # Rails application practices
@@ -23,7 +23,15 @@ Read the application's agent instructions, relevant ADRs, nearby models and spec
 ## Verify through Rails
 
 - Use Rails generators for migrations and `bin/rails db:prepare` for ordinary database setup. Use the configured test runner against the real database for constraints, tenant scoping, and persisted policy changes. Keep reusable infrastructure setup in its own change when it falls outside the feature.
-- In repositories using FactoryBot, build test data with factories for the existing models. Avoid shadow Active Record classes that point at the same tables and bypass model behavior.
 - Check both the allow and denial paths. For tenant authorization, cover a different tenant, role changes, revocation, and precedence of tenant or account blocks. Run Zeitwerk and Packwerk checks when the project uses them.
+
+## Keep RSpec setup readable
+
+- Declare scenario data in the closest `context`. Use lazy `let` when the example or subject references the object. Use `let!` when a persisted row must exist before the code under test queries for it. Keep state transitions being tested visible in the example.
+- Use FactoryBot factories for the existing models. When the project adopts short factory calls, include `FactoryBot::Syntax::Methods` in shared RSpec configuration and use `create(:factory)` in examples.
+- Load `rails_helper` from `.rspec` when the suite expects Rails on every run. Keep explicit requires for Rails specs when the repository also supports fast specs that run without booting Rails.
+- Prefer RSpec Rails transactional fixtures for database changes covered by per-example rollback, including records created by factories. Verify isolation before adding Database Cleaner or another cleanup strategy. When an example needs committed data visible to a separate process or an independent connection, choose targeted cleanup for that group and verify the actual visibility and cleanup behavior.
+
+[FactoryBot RSpec setup](https://github.com/thoughtbot/factory_bot/blob/main/GETTING_STARTED.md#rspec) · [Rails test transactions](https://guides.rubyonrails.org/testing.html#transactions)
 
 [Rails association guide](https://guides.rubyonrails.org/association_basics.html) · [Rails query guide](https://guides.rubyonrails.org/active_record_querying.html) · [Rails autoloading guide](https://guides.rubyonrails.org/autoloading_and_reloading_constants.html)
