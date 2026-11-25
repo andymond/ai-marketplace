@@ -24,6 +24,22 @@ For example, a provisioning action can call a Tenancy operation that owns the pe
 4. Run the smallest meaningful spec first, then the project's relevant CI checks. Use the configured linter for style, Zeitwerk for file and constant loading, Packwerk for declared boundaries where installed, and specs for runtime invariants. Packwerk results supplement review of runtime behavior and data ownership.
 5. When an agreed convention is missed repeatedly, put a working example or command in project instructions. For a rule a tool can verify reliably, prefer an existing generator, linter, test, or boundary check. Add a new enforcement mechanism only when the failure recurs and the rule is specific enough to check without regular exceptions.
 
+## Review workflows that issue a secret
+
+Trace an invitation or reset token from generation through storage, returned
+objects, and delivery. Check every representation that callers actually log
+or serialize. In Ruby, overriding a `Data` result's `inspect` can leave its
+default `to_s` exposing the value through interpolation. Verify both forms
+with a non-secret test value when the result carries a token.
+
+Store a digest when future requests only need to verify a presented token.
+When issuing an invitation also writes other records, arrange delivery after
+the transaction that owns the entire operation commits. A save callback can
+run before a later write fails. A service returning from a nested savepoint
+also leaves the outer transaction open. Trace the actual caller through that
+boundary. Check what an operator or user can do if delivery fails after commit
+and keep raw tokens out of ordinary logs and job arguments.
+
 ## Sources and adaptation
 
 Thoughtbot's audit skill informed the separate review passes for design, tests, and persistence. Its harness talk informed the use of deterministic feedback for rules tools can check. Rails Agent Skills informed routing to focused Rails guidance. Agent Rails informed keeping local decisions and commands close to their code. The placement table and Packwerk workflow above are this marketplace's adaptation for Rails applications with domain-owned packages.
