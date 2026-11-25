@@ -31,5 +31,6 @@ Use this skill when preparing or reviewing a pull request. Aim for one cohesive 
 ## Prepare the review
 
 - Verify the PR diff contains only its intended purpose and stays within the line and file limits.
+- For code changes, do a self-review against the full base diff. Trace public inputs through the changed behavior and specs. Use the clean-code guidance and any applicable framework skill if available. Correct concrete readability or convention issues before asking for review.
 - Run requested or project-relevant checks, and report what was and was not run. Do not claim unrun checks passed.
 - Write a concise title and description covering intent, scope, tests, and dependencies on other PRs. Request review or open the PR when asked; do not merge unless the user asks.

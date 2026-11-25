@@ -18,11 +18,12 @@ Read the application's agent instructions, relevant ADRs, nearby models and spec
 
 - Keep an outcome separate from its reason. Preserve relevant domain state across an interface and define predicates such as `blocked?` near that state.
 - Put named classes and value objects in their own Zeitwerk-compatible files. Use names and encapsulation to show what code does. Reserve comments for constraints the code cannot communicate.
-- Prefer a checked-in, validated registry when fixed policy grants are easier to review as data. Reject malformed entries and deny unknown roles or capabilities. Treat request-time membership and account status as current database state. Add database-backed policy definitions only when policy needs runtime editing, with an explicit audit and cache invalidation design.
+- When fixed policy is easier to review as a checked-in registry, load it through a Rails initializer using a `Rails.root` path. Validate it at boot and store the normalized, frozen data in application configuration. Keep the initializer independent of reloadable policy classes. Deny unknown roles and capabilities, and read changing membership and block state from the database. Consider database-backed grants when runtime editing warrants an audit and cache invalidation design.
 
 ## Verify through Rails
 
 - Use Rails generators for migrations and `bin/rails db:prepare` for ordinary database setup. Use the configured test runner against the real database for constraints, tenant scoping, and persisted policy changes. Keep reusable infrastructure setup in its own change when it falls outside the feature.
+- In repositories using FactoryBot, build test data with factories for the existing models. Avoid shadow Active Record classes that point at the same tables and bypass model behavior.
 - Check both the allow and denial paths. For tenant authorization, cover a different tenant, role changes, revocation, and precedence of tenant or account blocks. Run Zeitwerk and Packwerk checks when the project uses them.
 
 [Rails association guide](https://guides.rubyonrails.org/association_basics.html) · [Rails query guide](https://guides.rubyonrails.org/active_record_querying.html) · [Rails autoloading guide](https://guides.rubyonrails.org/autoloading_and_reloading_constants.html)
