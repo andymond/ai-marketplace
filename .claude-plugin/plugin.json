@@ -1,0 +1,12 @@
+{
+  "name": "ai-marketplace",
+  "version": "0.1.0",
+  "description": "Practical agent skills for software work: spec-driven development, clean code and architecture, Rails and Kotlin practices, code review, debugging, PR hygiene, worktrees and more.",
+  "author": {
+    "name": "andymond",
+    "url": "https://github.com/andymond"
+  },
+  "homepage": "https://github.com/andymond/ai-marketplace",
+  "repository": "https://github.com/andymond/ai-marketplace",
+  "keywords": ["skills", "rails", "code-review", "spec-driven-development", "clean-architecture"]
+}
