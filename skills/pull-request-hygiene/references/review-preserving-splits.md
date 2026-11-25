@@ -19,3 +19,20 @@ the replacement PRs and link back to the original discussion. Keep the original
 PR as the review record if the author prefers. If the author chooses to
 supersede it, close it after the replacements are linked. Retarget the next
 dependent PR after its base merges and verify its diff again.
+
+## Apply review fixes to a stack
+
+Check the remote head and base of each affected PR before editing. Apply a
+shared fix at the earliest layer that owns it, then update its descendants in
+dependency order. Check each resulting remote diff and mergeability against
+the current base. CI from an older head or base is evidence for that revision.
+
+If tooling cannot update the existing branches, preserve their review threads
+and publish clean follow-up branches from a verified base. Link each finding
+to the branch that carries its fix, and make clear which revision reviewers
+should use. Copying the same change to several branch heads can leave the
+merge base stale and produce duplicate diffs or conflicts in nearby edits.
+
+Test that intermediate slices can boot and pass their checks independently.
+If a slice installs an authentication adapter before the callback is wired,
+defer activation or document the dependency before anyone deploys it.
