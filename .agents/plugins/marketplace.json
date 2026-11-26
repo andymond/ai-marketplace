@@ -1,0 +1,20 @@
+{
+  "name": "andymond",
+  "interface": {
+    "displayName": "AI Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "ai-marketplace",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

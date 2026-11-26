@@ -19,6 +19,26 @@ On Claude Code versions before 2.1.275, add the marketplace first:
 
 Skills load as `ai-marketplace:<skill-name>`, for example `ai-marketplace:code-review`. Run `/plugin marketplace update andymond` to pick up new skills.
 
+## Install in Codex
+
+Add the GitHub repository as a marketplace and install its skills plugin.
+
+```sh
+codex plugin marketplace add andymond/ai-marketplace
+codex plugin add ai-marketplace@andymond
+```
+
+Open a new Codex session and look for the plugin’s skills in the skill picker.
+In the ChatGPT desktop app, use the Plugins Directory to install **AI Marketplace**
+from the **AI Marketplace** source for a local checkout. The repo catalog is
+discovered when the checkout is open as a trusted project.
+
+To test a local checkout from the CLI, run
+`codex plugin marketplace add ./path/to/ai-marketplace` instead of the GitHub
+source command, then install the same plugin.
+
+[OpenAI plugin packaging guide](https://developers.openai.com/plugins/build/plugins)
+
 ## Skills
 
 - [`skills/accessible-technical-documentation`](skills/accessible-technical-documentation/SKILL.md) — write readable technical prose, lists, tables, and diagrams with text equivalents.
