@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-marketplace",
+  "version": "0.1.0",
+  "description": "Reusable skills for software design, implementation, debugging, and review.",
+  "author": {
+    "name": "andymond",
+    "url": "https://github.com/andymond"
+  },
+  "homepage": "https://github.com/andymond/ai-marketplace",
+  "repository": "https://github.com/andymond/ai-marketplace",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "AI Marketplace",
+        "shortDescription": "Agent skills for software development",
+        "category": "Developer Tools"
+      }
+    }
+  }
+}
