@@ -38,6 +38,19 @@ setting and an empty list mean in each environment. If a setting is required,
 fail boot with the key and expected format. The provisioning operation can
 then express eligibility as a membership check.
 
+Keep the initializer focused on boot wiring. If validation has several
+responsibilities, extract a namespaced module and explicitly require it from
+`lib/`, or use the application's existing autoload-once setup. Give distinct
+rules names such as `validate_origin!`. A bare method definition at the top
+level of an initializer adds a private method to `Object`. Keep simple
+assignments inline.
+
+Put environment-specific defaults and intentional opt-outs in environment
+configuration. Give absent, null, and malformed values one validation path
+when they require the same correction. Keep checks separate when they point
+to different fixes, such as a malformed credentials mapping and an invalid
+callback origin.
+
 Verify configuration failures by booting Rails in the target environment.
 Use domain specs for accepted and denied operations once configuration has
 loaded. Keep data meant to change while the process runs in its runtime source.
