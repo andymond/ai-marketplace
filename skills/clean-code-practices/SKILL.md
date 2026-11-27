@@ -1,6 +1,6 @@
 ---
 name: clean-code-practices
-description: Improve code readability and changeability using practical craftsmanship principles associated with Robert C. Martin's Clean Code, adapted to the project and task.
+description: Write or refactor code for simplicity and modularity. Make control flow and responsibilities clear with meaningful method and variable names, and remove redundant logic while preserving behavior.
 ---
 
 # Clean code practices
@@ -13,16 +13,20 @@ Use this skill when writing or refactoring code for clarity and maintainability.
 - Identify the behavior that must remain unchanged. Make the smallest useful improvement within the requested scope.
 - Prefer code that makes intent easy to understand at the call site and keeps related behavior together.
 
-## Improve clarity
+## Make the normal path easy to read
+
+- Start with direct code in the module that owns the behavior. Read the entry point in execution order. Prefer positive conditions and short guards that keep the main path flat. In Ruby, reserve `unless` for a simple guard that reads naturally.
+- Name a compound condition after the decision it represents. Use a local variable when the name helps at one site, and a named method when the operation has a coherent responsibility or the name makes the caller easier to follow. Keep straightforward expressions inline.
+- Remove branches, fallback paths, duplicate validation, and state that serve no distinct behavior. When two cases have the same result and require the same caller action, handle them together. Check behavior for missing, invalid, and previously persisted values before simplifying.
+- Keep related reads and writes together, particularly when they share a transaction or lock. Extract work behind a focused interface when the caller can use it without knowing the implementation details.
 
 - Use names and encapsulation to communicate purpose and domain meaning. If a comment explains what the next lines do, improve the names or structure first.
 - Follow each important value from the public signature to the branch that uses it. Keep the same domain name across layers when the value has the same meaning. If a policy accepts only a user ID, call it `user_id` at the entry point and downstream. Use a broader name only when that boundary actually supports the broader concept.
-- Keep functions and types cohesive around one clear responsibility. Extract a helper when it gives a meaningful name or removes repeated logic; avoid arbitrary size limits and excessive indirection.
 - Make data flow and side effects visible. Minimize hidden state, surprising mutation, and functions that appear to answer a question while changing the system. Give a decision an explicit outcome and a separate reason when callers need both.
 - Name predicates for the state they examine when several states coexist. Use named arguments when mapping multiple similar values into a value object so the mapping is visible at the call site.
 - Handle errors at a level that can make a useful decision. Preserve relevant context, avoid swallowing failures, and do not use exceptions or sentinel values to obscure ordinary control flow.
 - Keep formatting consistent and use comments to explain intent, constraints, or non-obvious decisions that the code cannot express directly.
-- Prefer simple designs over speculative generality. Add abstractions when they reduce real coupling or repetition, not to anticipate unsupported future needs.
+- Keep each new layer accountable for a real responsibility. A forwarding wrapper, a flag with no consumer, or a catch-all configuration object adds work for readers. Use repository conventions and existing interfaces before introducing another abstraction.
 
 ## Protect behavior while improving code
 
