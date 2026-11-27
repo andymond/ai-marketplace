@@ -35,3 +35,26 @@ If Git is launched from an application that does not inherit the Codex CLI path,
 - Blocks the commit if Codex is unavailable, there is no interactive terminal, consent is declined, or understanding remains unclear. To bypass once, run `SKIP_LEARNING_QUIZ=1 git commit ...`.
 
 The hook only sees staged changes. Stage the files you intend to ship before committing.
+
+## Open a review-ready PR after a commit
+
+Install and sign in to the [GitHub CLI](https://cli.github.com/). From the
+checkout where you want this behavior, run:
+
+```sh
+git config core.hooksPath .githooks
+git config --local hooks.openReviewPr true
+```
+
+After a successful commit, GitHub CLI looks up the current branch's PR and
+opens it in your browser if it's open and out of draft. The browser shows the
+latest pushed revision. Push your new commit when you're ready to include it
+in the review. Draft, closed, and merged PRs are skipped. CI and reviewer
+approval use the PR's normal workflow.
+
+To skip the browser for one commit, run
+`git -c hooks.openReviewPr=false commit`. To turn off the behavior for the
+checkout, run `git config --local hooks.openReviewPr false`.
+
+To use the hook in another project, copy `.githooks/post-commit` into its
+hooks directory and apply the opt-in setting there.

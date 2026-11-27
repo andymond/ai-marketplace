@@ -75,3 +75,4 @@ Skills in this repository are source files for review and reuse. Claude Code pic
 
 - [`templates/AGENTS.md`](templates/AGENTS.md) — optional starting point for project-specific agent instructions. Replace the prompts with verified details, remove irrelevant sections, and keep commands and constraints current.
 - [`.githooks/pre-commit`](.githooks/pre-commit) — optional interactive learning quiz for staged changes; see [hook setup and privacy notes](.githooks/README.md).
+- [`.githooks/post-commit`](.githooks/post-commit) — optionally open the current branch’s review-ready PR in a browser after committing. See [hook setup](.githooks/README.md#open-a-review-ready-pr-after-a-commit).
