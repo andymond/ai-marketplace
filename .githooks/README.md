@@ -2,7 +2,7 @@
 
 This hook generates a short quiz from staged changes, asks for answers, and uses Codex CLI to give supportive feedback before allowing a commit.
 
-## Enable in this repository
+## Run on a commit
 
 Install the [Codex CLI](https://developers.openai.com/codex/cli) and sign in, then configure this checkout to use the tracked hooks directory:
 
@@ -10,7 +10,13 @@ Install the [Codex CLI](https://developers.openai.com/codex/cli) and sign in, th
 git config core.hooksPath .githooks
 ```
 
-Git does not enable repository hooks just because the files exist. This setting is local to your checkout. To disable the hook later:
+After setting the hooks path, request the quiz for a specific commit:
+
+```sh
+RUN_LEARNING_QUIZ=1 LEARNING_QUIZ_FOCUS="the transaction boundary" git commit
+```
+
+Ordinary commits skip the quiz. Git does not enable repository hooks just because the files exist. This setting is local to your checkout. To disable the hook later:
 
 ```sh
 git config --unset core.hooksPath
