@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ "$(git config --bool --get hooks.openReviewPr 2>/dev/null)" != "true" ]; then
+  exit 0
+fi
+
+git symbolic-ref --quiet HEAD >/dev/null || exit 0
+command -v gh >/dev/null 2>&1 || exit 0
+
+export GH_PROMPT_DISABLED=1
+
+pr_url=$(gh pr view --json state,isDraft,url \
+  --jq 'select(.state == "OPEN" and .isDraft == false) | .url // empty' 2>/dev/null) || exit 0
+
+case "$pr_url" in
+  https://*) ;;
+  *) exit 0 ;;
+esac
+
+if ! gh pr view "$pr_url" --web; then
+  printf 'Open the pull request at %s\n' "$pr_url" >&2
+fi
+
+exit 0
