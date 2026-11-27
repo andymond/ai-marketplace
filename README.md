@@ -71,5 +71,7 @@ Skills in this repository are source files for review and reuse. Claude Code pic
 
 ## Templates
 
+- [`templates/codex-hooks`](templates/codex-hooks/README.md) — optional Codex hooks for worktree context and an advisory PR preflight.
+
 - [`templates/AGENTS.md`](templates/AGENTS.md) — optional starting point for project-specific agent instructions. Replace the prompts with verified details, remove irrelevant sections, and keep commands and constraints current.
 - [`.githooks/pre-commit`](.githooks/pre-commit) — optional interactive learning quiz for staged changes; see [hook setup and privacy notes](.githooks/README.md).
