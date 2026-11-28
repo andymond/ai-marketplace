@@ -25,6 +25,7 @@ When adding or reviewing browser sign-in, logout, or session storage, use [Brows
 - Keep an outcome separate from its reason. Preserve relevant domain state across an interface and define predicates such as `blocked?` near that state.
 - Put named classes and value objects in their own Zeitwerk-compatible files. Use names and encapsulation to show what code does. Reserve comments for constraints the code cannot communicate.
 - When fixed policy is easier to review as a checked-in registry, load it through a Rails initializer using a `Rails.root` path. Validate it at boot and store the normalized, frozen data in application configuration. Keep the initializer independent of reloadable policy classes. Deny unknown roles and capabilities, and read changing membership and block state from the database. Consider database-backed grants when runtime editing warrants an audit and cache invalidation design.
+- For required credentials or deployment settings, fail boot with an actionable error when values are missing or invalid. Make optional behavior explicit for each environment instead of silently storing `nil` and discovering the problem on a request. Once the initializer validates and stores normalized configuration, do not repeat presence checks in request or job workflows.
 
 ## Verify through Rails
 
